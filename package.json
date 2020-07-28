@@ -1,5 +1,5 @@
 {
-  "name": "file-db",
+  "name": "node-file-db",
   "version": "1.0.0",
   "description": "file db",
   "main": "dist/index.js",
