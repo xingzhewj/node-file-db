@@ -3,7 +3,7 @@
  * @Author wangjie19
  * @Date 2020-07-23 15:21:19
  * @Last Modified by: wangjie19
- * @Last Modified time: 2020-07-28 10:59:36
+ * @Last Modified time: 2020-07-28 20:31:43
  */
 
 import fs from "fs";
@@ -41,9 +41,9 @@ class Table {
      * @param field 查询字段
      * @return 查询结果对象
      */
-    where(field: object = {}): object[] {
+    where(field: any): object[] {
         const list = this.data();
-        return list.filter(item => {
+        return list.filter((item: any) => {
             return Object.keys(field).every(key => {
                 return item[key] === field[key];
             });
@@ -66,9 +66,9 @@ class Table {
      * 删除数据
      * @return 删除后的表对象
      */
-    deleterow(field: object = {}): Table {
+    deleterow(field: any): Table {
         const list = this.data();
-        const newList = list.filter(item => {
+        const newList = list.filter((item: any) => {
             return !Object.keys(field).every(key => {
                 return item[key] === field[key];
             });
@@ -81,9 +81,9 @@ class Table {
      * 更新表数据
      * @param row 行数据
      */
-    update(field: object, row: object = {}): Table {
+    update(field: any, row: object = {}): Table {
         const list = this.data();
-        const newList = list.map((item, index) => {
+        const newList = list.map((item: any, index) => {
             const isSome = Object.keys(field).every(key => {
                 return item[key] === field[key];
             });

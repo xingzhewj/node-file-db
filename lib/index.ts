@@ -3,7 +3,7 @@
  * @Author wangjie19
  * @Date 2020-07-22 17:17:38
  * @Last Modified by: wangjie19
- * @Last Modified time: 2020-07-27 17:24:12
+ * @Last Modified time: 2020-07-28 17:08:33
  */
 
 import path from 'path';
@@ -12,7 +12,7 @@ import DB from './db';
 import store from './redux/store';
 import { deleteDir } from './util';
 
-class FileDB{
+class FileDB {
     constructor() {
         
     }
@@ -22,7 +22,7 @@ class FileDB{
      * @param name 数据库名
      * @return 数据库对象
      */
-    createDB() {
+    createDB(): DB {
         const state = store.getState();
         const name = state.db;
         if (!fs.existsSync(path.resolve(__dirname, `../db/${name}`))) {
@@ -36,7 +36,7 @@ class FileDB{
      * @param name 数据库名
      * @return 文件数据库主对象
      */
-    deleteDB(name: string = '') {
+    deleteDB(name: string = ''): FileDB {
         deleteDir(path.resolve(__dirname, '../db/' + name));
         return this;
     }
