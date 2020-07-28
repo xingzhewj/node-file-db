@@ -1,0 +1,35 @@
+{
+  "name": "file-db",
+  "version": "1.0.0",
+  "description": "file db",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xingzhewj/node-file-db.git"
+  },
+  "keywords": [
+    "file",
+    "db"
+  ],
+  "engines": {
+    "node": ">= 6.4.0"
+  },
+  "author": "walker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xingzhewj/node-file-db/issues"
+  },
+  "homepage": "https://github.com/xingzhewj/node-file-db#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.5",
+    "jest": "^26.1.0"
+  },
+  "dependencies": {
+    "redux": "^4.0.5"
+  }
+}

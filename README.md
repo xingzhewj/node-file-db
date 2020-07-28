@@ -1,2 +1,17 @@
 # node-file-db
-用户本地文件系统的数据库
+## Installation
+## Documentation
+## Inner Working
+### Example
+```javascript
+{
+    test: {
+        data1 : {
+            array : ['test','array']
+        },
+        data2 : 5
+    }
+}
+```
+## Usage
+## License
