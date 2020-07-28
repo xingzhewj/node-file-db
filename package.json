@@ -1,6 +1,6 @@
 {
   "name": "node-file-db",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "file db",
   "main": "dist/index.js",
   "types": "typing/index.d.ts",
