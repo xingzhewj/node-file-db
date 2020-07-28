@@ -6,7 +6,7 @@ node环境下的本地文件系统型数据存储模式。目前仅可在node环
 ## Inner Working
 ### Example
 ```javascript
-import filddb from 'file-db';
+import filddb from 'node-file-db';
 control
     // 创建数据库
     .createDB('test')
