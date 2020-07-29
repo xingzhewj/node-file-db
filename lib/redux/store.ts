@@ -6,11 +6,12 @@
  * @Last Modified time: 2020-07-25 22:39:33
  */
 
+import path from 'path';
 import { createStore } from 'redux';
 import reducers from './reducer';
 
 const initialState = {
-    root: '',
+    root: path.resolve(__dirname, '../../db'),
     db: '',
     table: ''
 };

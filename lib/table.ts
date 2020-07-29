@@ -9,7 +9,6 @@
 import fs from "fs";
 import path from 'path';
 import store from './redux/store';
-import { IField } from "./interface";
 
 class Table {
     protected name: string;
@@ -21,7 +20,7 @@ class Table {
 
     private write(list: object[]): Table {
         const state = store.getState();
-        const tablePath = path.resolve(__dirname, `../db/${state.db}/${this.name}.json`);
+        const tablePath = path.resolve(state.root, state.db, `${this.name}.json`);
         fs.writeFileSync(tablePath, JSON.stringify(list), {encoding: 'utf-8'});
         return this;
     }
@@ -32,7 +31,7 @@ class Table {
      */
     data(): object[] {
         const state = store.getState();
-        const tablePath = path.resolve(__dirname, `../db/${state.db}/${this.name}.json`);
+        const tablePath = path.resolve(state.root, state.db, `${this.name}.json`);
         return JSON.parse(fs.readFileSync(tablePath, {encoding: 'utf-8'}));
     }
 

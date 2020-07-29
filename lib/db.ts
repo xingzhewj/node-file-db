@@ -22,7 +22,7 @@ class DB {
      */
     private getTables(): string[] {
         const state = store.getState();
-        const tablePath = path.resolve(__dirname, `../db/${state.db}`);
+        const tablePath = path.resolve(state.root, state.db);
         const tables = fs.readdirSync(tablePath);
         return tables.map(tb => tb.replace(path.extname(tb), ''));
     }
@@ -35,7 +35,7 @@ class DB {
      */
     create(name: string = ''): Table {
         const state = store.getState();
-        const tablePath = path.resolve(__dirname, `../db/${state.db}/${name}.json`);
+        const tablePath = path.resolve(state.root, state.db, `${name}.json`);
         fs.writeFileSync(tablePath, '[]');
         return new Table(name);
     }
@@ -47,7 +47,7 @@ class DB {
      */
     drop(name = ''): boolean {
         const state = store.getState();
-        const tablePath = path.resolve(__dirname, `../db/${state.db}/${name}.json`);
+        const tablePath = path.resolve(state.root, state.db, `${name}.json`);
         fs.unlinkSync(tablePath);
         return true;
     }

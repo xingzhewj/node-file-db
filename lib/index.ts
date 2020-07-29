@@ -13,9 +13,7 @@ import store from './redux/store';
 import { deleteDir } from './util';
 
 class FileDB {
-    constructor() {
-        
-    }
+    constructor() {}
 
     /**
      * 创建数据库
@@ -24,9 +22,8 @@ class FileDB {
      */
     createDB(): DB {
         const state = store.getState();
-        const name = state.db;
-        if (!fs.existsSync(path.resolve(__dirname, `../db/${name}`))) {
-            fs.mkdirSync(path.resolve(__dirname, `../db/${name}`));
+        if (!fs.existsSync(path.resolve(state.root, state.db))) {
+            fs.mkdirSync(path.resolve(state.root, state.db));
         }
         return new DB();
     }
@@ -37,7 +34,8 @@ class FileDB {
      * @return 文件数据库主对象
      */
     deleteDB(name: string = ''): FileDB {
-        deleteDir(path.resolve(__dirname, '../db/' + name));
+        const state = store.getState();
+        deleteDir(path.resolve(state.root, name));
         return this;
     }
 
@@ -45,7 +43,8 @@ class FileDB {
      * 获取所有数据库
      */
     dbs(): Array<string> {
-        const dbPaths = fs.readdirSync(path.resolve(__dirname, '../db'));
+        const state = store.getState();
+        const dbPaths = fs.readdirSync(state.root);
         return dbPaths.filter(it => it !== '.gitkeep');
     }
 
