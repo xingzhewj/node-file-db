@@ -9,11 +9,17 @@
 import FileDB from './index';
 import { recive } from './redux/action';
 import store from './redux/store';
+import { IConfig } from './interface';
 
 class ControlProxy {
     private fileDB: FileDB
     constructor() {
         this.fileDB = new FileDB();
+    }
+
+    config(conf: IConfig) {
+        conf.root ? store.dispatch(recive('root', conf.root)) : null;
+        return this;
     }
 
     createDB(name: string = '') {

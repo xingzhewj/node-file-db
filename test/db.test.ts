@@ -13,9 +13,17 @@ import store from "../lib/redux/store";
 import Table from '../lib/table';
 
 describe('db test', () => {
+    test('db root', () => {
+        control.config({
+            root: path.resolve(__dirname, '../dbbase')
+        });
+        const state = store.getState();
+        expect(state.root === path.resolve(__dirname, '../dbbase')).toBe(true);
+    });
     test('db create', () => {
         control.createDB('test').create('user');
-        expect(fs.existsSync(path.resolve(__dirname, `../db/test/user.json`))).toBe(true);
+        const state = store.getState();
+        expect(fs.existsSync(path.resolve(state.root, state.db, `user.json`))).toBe(true);
     });
 
     test('db', () => {
@@ -29,8 +37,9 @@ describe('db test', () => {
     });
 
     test('create Table', () => {
+        const state = store.getState();
         control.db('test').create('logs');
-        expect(fs.existsSync(path.resolve(__dirname, '../db/test/logs.json'))).toBe(true);
+        expect(fs.existsSync(path.resolve(state.root, state.db, 'logs.json'))).toBe(true);
     });
     test('content Table', () => {
         const table = (control.db('test').table('logs') as Table);
@@ -41,8 +50,9 @@ describe('db test', () => {
         expect(table.message === '表不存在').toBe(true);
     });
     test('drop Table', () => {
+        const state = store.getState();
         control.db('test').drop('logs');
-        expect(fs.existsSync(path.resolve(__dirname, '../db/test/logs.json'))).toBe(false);
+        expect(fs.existsSync(path.resolve(state.root, state.db, 'logs.json'))).toBe(false);
     });
 
     test('liet Table', () => {
@@ -51,9 +61,10 @@ describe('db test', () => {
         expect(Array.isArray(list)).toBe(true);
     });
     test('insert Table', () => {
+        const state = store.getState();
         const table = (control.db('test').table('user') as Table);
         table.insert({name: 'wangjie', age: 30});
-        const json = (JSON.parse(fs.readFileSync(path.resolve(__dirname, '../db/test/user.json'), {encoding: 'utf-8'})) as []);
+        const json = (JSON.parse(fs.readFileSync(path.resolve(state.root, state.db, 'user.json'), {encoding: 'utf-8'})) as []);
         expect(json.some(item => {
             return JSON.stringify(item) === JSON.stringify({name: 'wangjie', age: 30});
         })).toBe(true);
@@ -66,9 +77,10 @@ describe('db test', () => {
         })).toBe(true);
     });
     test('update Table', () => {
+        const state = store.getState();
         const table = (control.db('test').table('user') as Table);
         table.update({name: 'wangjie'}, {name: 'walker', age: 99});
-        const json = (JSON.parse(fs.readFileSync(path.resolve(__dirname, '../db/test/user.json'), {encoding: 'utf-8'})) as []);
+        const json = (JSON.parse(fs.readFileSync(path.resolve(state.root, state.db, 'user.json'), {encoding: 'utf-8'})) as []);
         const result = json.find(item => {
             return Object.keys({name: 'walker', age: 99}).every(key => {
                 return item[key] === {name: 'walker', age: 99}[key];
