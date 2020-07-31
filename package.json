@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "description": "file db",
   "main": "dist/index.js",
-  "types": "typing/index.d.ts",
+  "types": "typing/control.d.ts",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "test": "jest"
