@@ -1,8 +1,7 @@
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     target: 'node',
     entry: __dirname + '/lib/control.ts',
-    devtool: "inline-source-map",
     output: {
         libraryTarget: 'umd',
         filename: 'index.js',

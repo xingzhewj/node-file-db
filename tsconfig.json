@@ -10,6 +10,11 @@
         "declaration": true,
         "declarationDir": "./typing/"
     },
+    "awesomeTypescriptLoaderOptions": {
+        "useBabel": true,
+        "babelCore": "@babel/core",
+        
+    },
     "include": [
         "./lib/**/*"
     ],

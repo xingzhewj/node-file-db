@@ -2,7 +2,7 @@ module.exports = {
     presets: [
         [
             '@babel/preset-env', {
-                "modules": "commonjs",
+                "modules": "umd",
                 targets: {
                     node: 'current'
                 }
@@ -10,5 +10,7 @@ module.exports = {
         ],
         '@babel/preset-typescript'
     ],
-    "plugins": []
+    "plugins": [
+        "add-module-exports"
+    ]
 };

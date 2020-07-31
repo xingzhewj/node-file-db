@@ -29,6 +29,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
+    "@babel/register": "^7.10.5",
     "@types/jest": "^26.0.5",
     "awesome-typescript-loader": "^5.2.1",
     "babel-plugin-add-module-exports": "^1.0.2",
