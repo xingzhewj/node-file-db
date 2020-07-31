@@ -3,9 +3,10 @@
   "version": "1.0.1",
   "description": "file db",
   "main": "dist/index.js",
-  "types": "typing/index.d.ts",
+  "types": "typing/control.d.ts",
   "scripts": {
     "build": "webpack --config webpack.config.js",
+    "tsc": "tsc",
     "test": "jest"
   },
   "repository": {
@@ -30,6 +31,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@types/jest": "^26.0.5",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-plugin-add-module-exports": "^1.0.2",
     "jest": "^26.1.0",
     "typescript": "^3.9.7",
     "webpack": "^4.44.0",
