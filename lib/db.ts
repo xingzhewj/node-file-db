@@ -45,7 +45,7 @@ class DB {
      * @param name 表名
      * @return 删除的表结果
      */
-    drop(name = ''): boolean {
+    drop(name = ''): DB {
         const state = store.getState();
         const tablePath = path.resolve(state.root, state.db, `${name}.json`);
         fs.unlinkSync(tablePath);
