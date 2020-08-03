@@ -2,7 +2,7 @@
 ## Installation
 node环境下的本地文件系统型数据存储模式。目前仅可在node环境下使用，version>6.9.6,如果使用jest进行单测，需要node环境version>10.15.0。
 ## Documentation
-暂无
+[wiki文档](https://github.com/xingzhewj/node-file-db/wiki)
 ## Inner Working
 ### Example
 ```javascript

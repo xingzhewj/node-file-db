@@ -49,7 +49,7 @@ class DB {
         const state = store.getState();
         const tablePath = path.resolve(state.root, state.db, `${name}.json`);
         fs.unlinkSync(tablePath);
-        return true;
+        return this;
     }
 
     /**
